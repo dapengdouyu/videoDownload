@@ -1,0 +1,23 @@
+{
+  "name": "videoDownload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "fs-extra": "^10.0.0",
+    "m3u8-parser": "^4.7.0",
+    "ora": "5.4.1",
+    "tiny-async-pool": "^1.2.0"
+  }
+}
