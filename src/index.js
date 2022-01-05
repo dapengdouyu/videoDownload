@@ -7,6 +7,7 @@ const path = require("path");
 const ora = require("ora");
 const v2 = require("./v2");
 const asyncPool = require("tiny-async-pool");
+const {blue,red,green,greenBright} = require('chalk');
 let pathVideoDB = "",
   AllIndex = 0,
   AllLen = 0;
@@ -68,10 +69,10 @@ async function download(segments, newName) {
       cipher.on("error", (error) => {
         throw error;
       });
-      spinner.text = `总列表:${AllIndex}/${AllLen}\t下载文件:${newName}\t${index++}/${len}`;
+      spinner.text = `${blue('总列表:')}${AllIndex}/${AllLen}\t${blue('下载文件:')}${newName} ${greenBright('下载进度:')}${index++}/${len}`;
       return Buffer.concat([cipher.update(content), cipher.final()]);
     } catch (error) {
-      spinner.fail(`总列表:${AllIndex}/${AllLen}:下载失败:${newName}`);
+      spinner.fail(`${blue('总列表:')}${AllIndex}/${AllLen}\t${red('下载失败:')}${newName}`);
     }
   }
   const results = await asyncPool(20, segments, callback);
@@ -79,7 +80,7 @@ async function download(segments, newName) {
   await fs.writeFile(pathVideoDB, outputData);
   spinner.stop();
   spinner.succeed(
-    `总列表:${AllIndex}/${AllLen}\t下载成功:${newName}\t${index}/${len}`
+    `${blue('总列表:')}${AllIndex}/${AllLen}\t${greenBright('下载成功:')}${newName} ${greenBright('下载进度:')}${index}/${len}`
   );
 }
 async function getDir(cid = "") {
@@ -104,13 +105,14 @@ async function getDir(cid = "") {
       AllIndex++;
       const { type, status, title, taskId } = item;
       if (type === "video") {
-        const newTitle = `课程${++CIndex} ${title}.ts`;
+        const newTitle = `课程${++CIndex}_${title}.ts`;
         pathVideoDB = path.join(baseUrl, unit, newTitle);
         if (fs.existsSync(path.join(baseUrl, unit, newTitle))) {
-          console.log(`课程已存在:${newTitle}`);
+          console.log(`${blue('总列表:')}${AllIndex}/${AllLen}\t${blue('课程已存在:')}${newTitle}`);
           continue;
         }
         if (status !== "published") {
+          console.log(`${blue('总列表:')}${AllIndex}/${AllLen}\t${blue('课程未发布')}:${newTitle}`);
           continue;
         }
         await init(
@@ -128,7 +130,7 @@ async function getDir(cid = "") {
           }
         }
         pathVideoDB = path.join(baseUrl, unit);
-        console.log(`非文件:${unit}`);
+        console.log(`${blue('总列表:')}${AllIndex}/${AllLen}\t${blue('非文件')}:${unit}`);
         await fs.ensureDir(pathVideoDB);
       }
     }
