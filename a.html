@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html> <!--<![endif]-->
+
+
+
+<html lang="zh_CN" class="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>React全家桶(架构) - 珠峰培训 - Powered By EduSoho</title>
+      <meta name="keywords"
+          content="
+前端培训,前端开发培训,web前端培训,javascript培训,JS培训,移动端培训,Node培训,珠峰培训"/>
+    <meta name="description"
+          content="2021年12月https://gitee.com/zhufengpeixun/zhufengreact2021122021年10月https://gitee.com/zhufengpeixun/zh..."/>
+    <meta name="format-detection"
+          content="telephone=no"/>
+    <meta content="V3-mY8B-stjEvJEmESI9LblogKjgmxJplGgTCSMQJsQ" name="csrf-token"/>
+    <meta content="1" name="is-login"/>
+    <meta content="0" name="wechat_login_bind"/>
+  
+
+  
+      <link rel="icon" href="/files/system/2018/09-18/1052408a1727504973.png?version=21.1.1" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/files/system/2018/09-18/1052408a1727504973.png?version=21.1.1" type="image/x-icon" media="screen"/>
+  
+  <!--[if lt IE 9]>
+  <script src="/static-dist/libs/html5shiv.js?version=21.1.1"></script>
+  <script src="/static-dist/es5-shim/es5-shim.js?version=21.1.1"></script>
+  <script src="/static-dist/es5-shim/es5-sham.js?version=21.1.1"></script>
+  <![endif]-->
+
+          <link href="/static-dist/app/css/bootstrap.css?version=21.1.1" rel="stylesheet" />
+<link href="/static-dist/app/css/main.css?version=21.1.1" rel="stylesheet" />
+<link href="/static-dist/app/css/main-v2.css?version=21.1.1" rel="stylesheet" />
+
+
+
+  
+  </head>
+<body class="es-main-default es-nav-default course-dashboard-page">
+<!--[if lt IE 9]>
+<script src="/static-dist/libs/fix-ie.js?version=21.1.1"></script>
+<style>
+  .lt-ie9 {
+    overflow: hidden;
+  }
+  .ie-mask {
+    z-index: 999999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    background: #000;
+  }
+  .ie-alert-wrap {
+    position: absolute;
+    z-index: 1000000;
+    margin: -200px auto 0;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  .ie-alert {
+    width: 514px;
+    height: 397px;
+    margin: 0 auto;
+  }
+  .ie-alert__chrome,
+  .ie-alert__firefox {
+    position: absolute;
+    z-index: 1000001;
+    display: block;
+    bottom: 48px;
+    width: 60px;
+    height: 80px;
+  }
+  .ie-alert__chrome {
+    left: 50%;
+    margin-left: -80px;
+  }
+  .ie-alert__firefox {
+    right: 50%;
+    margin-right: -80px;
+  }
+</style>
+<div class="ie-mask"></div>
+<div class="ie-alert-wrap">
+  <div class="ie-alert" style="background:url('/static-dist/app/img/browser/browser_update.png?version=21.1.1')">
+    <a href="http://www.baidu.com/s?wd=%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8" target="_blank" class="ie-alert__chrome"></a>
+    <a href="http://firefox.com.cn/download/" target="_blank" class="ie-alert__firefox"></a>
+  </div>
+</div>
+
+<![endif]-->
+
+  <div class="es-wrap">
+                  
+<header class="es-header navbar">
+  <div class="navbar-header">
+  <div class="visible-xs  navbar-mobile">
+    <a href="javascript:;" class="navbar-more js-navbar-more">
+      <i class="es-icon es-icon-menu"></i>
+    </a>
+    <div class="html-mask"></div>
+    <div class="nav-mobile">
+      <form class="navbar-form" action="/search" method="get">
+        <div class="form-group">
+          <input class="form-control" placeholder="搜索" name="q">
+          <button class="button es-icon es-icon-search"></button>
+        </div>
+      </form>
+
+      <ul class="nav navbar-nav">
+        
+    
+      <li class="">
+  <a href="/./" >首页 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/course/index.html" target="_blank">前端架构师培训 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/customize/js/index.html" target="_blank">HTML5培训 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.javascriptpeixun.cn/mobile" target="_blank">客户端下载 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/videoCourse/lesson.html" target="_blank">视频教程 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/company/teachers.html" target="_blank">讲师团队 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/company/about.html" target="_blank">关于珠峰 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/jiuye.html" target="_blank">就业信息 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/jing/contactus.html" target="_blank">联系我们 </a>
+  </li>        </ul>
+    </div>
+  </div>
+    <a href="/" class="navbar-brand">
+          <img src="/files/system/2019/07-26/184843b71253055272.png?version=21.1.1">
+      </a>
+</div>  <nav class="collapse navbar-collapse">
+    <ul class="nav navbar-nav clearfix hidden-xs " id="nav">
+      
+    
+      <li class="">
+  <a href="/./" >首页 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/course/index.html" target="_blank">前端架构师培训 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/customize/js/index.html" target="_blank">HTML5培训 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.javascriptpeixun.cn/mobile" target="_blank">客户端下载 </a>
+  </li>      
+      <li class="">
+  <a href="http://www.zhufengpeixun.cn/videoCourse/lesson.html" target="_blank">视频教程 </a>
+  </li>          <li class="nav-more nav-hover">
+      <a class="more">
+        <i class="es-icon es-icon-morehoriz"></i>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+                  
+          <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/company/teachers.html" target="_blank">讲师团队 </a>
+  </li>                  
+          <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/company/about.html" target="_blank">关于珠峰 </a>
+  </li>                  
+          <li class="">
+  <a href="http://www.zhufengpeixun.cn/main/jiuye.html" target="_blank">就业信息 </a>
+  </li>                  
+          <li class="">
+  <a href="http://www.zhufengpeixun.cn/jing/contactus.html" target="_blank">联系我们 </a>
+  </li>              </ul>
+    </li>
+  
+      
+      
+      
+      </ul>
+    <div class="navbar-user  left ">
+  <ul class="nav user-nav">
+                <li class="user-manage-li visible-lg cd-ml24">
+    <a class="btn cd-btn user-manage-toggle" href="/my/courses/learning">我的学习</a>
+  </li>
+
+
+      <li class="user-inform-li js-user-inform hidden-xs hidden-sm cd-ml24 cd-dropdown" data-toggle="cd-dropdown">
+  <a class="inform-dropdown-toggle"><i class="cd-icon cd-icon-bell"></i></a>
+  <div class="dropdown-menu inform-dropdown js-user-nav-dropdown" role="menu">
+    <div class="clearfix inform-dropdown-head" role="tablist">
+      <a class="inform-dropdown-head__tab active js-inform-tab" href="#notification" role="tab" data-toggle="tab" data-type="newNotification">通知</a>
+              <a class="inform-dropdown-head__tab js-inform-tab" href="#message" role="tab" data-toggle="tab" data-type="conversation">私信</a>
+          </div>
+    <div class="tab-content">
+      <div class="notification-content tab-pane active" role="tabpanel" id="notification">
+        <div class="inform-dropdown-body js-inform-dropdown-body">
+                      <div class="inform-empty-status js-inform-empty">
+              <img class="cd-mb24" src="/static-dist/app/img/notice/null-notice.png?version=21.1.1"
+            srcset="/static-dist/app/img/notice/null-notice.png?version=21.1.1 1x, /static-dist/app/img/notice/null-notice@2x.png?version=21.1.1 2x"/>
+              <div class="inform-empty-status__tip">暂无新的通知～</div>
+            </div>
+                  </div>
+        <div class="inform-dropdown-foot">
+          <a class="cd-link-minor" href="/notification">查看全部通知</a>
+        </div>
+      </div>
+      <div class="message-content tab-pane" role="tabpanel" id="message">
+        <div class="inform-dropdown-body js-inform-dropdown-body">
+                      <div class="inform-empty-status js-inform-empty">
+              <img class="cd-mb24" src="/static-dist/app/img/notice/null-message.png?version=21.1.1"
+          srcset="/static-dist/app/img/notice/null-message.png?version=21.1.1 1x, /static-dist/app/img/notice/null-message@2x.png?version=21.1.1 2x"/>
+              <div class="inform-empty-status__tip">暂无新的私信～</div>
+            </div>
+                  </div>
+        <div class="inform-dropdown-foot">
+          <a class="cd-link-minor" href="/message/">查看全部私信</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>      <li class="user-avatar-li cd-dropdown cd-ml24"  data-toggle="cd-dropdown">
+  <a class="user-avatar-toggle" href="javascript:;">
+    <img class="cd-avatar cd-avatar-xs" src="/assets/img/default/avatar.png">
+  </a>
+  <div class="dropdown-menu user-dropdown hidden-sm hidden-xs hidden-md js-user-nav-dropdown">
+    <div class="user-dropdown-info cd-mb24">
+      <a class="user-dropdown-info__avatar cd-mr24" href="/user/574">
+        <img class="cd-avatar" src="/assets/img/default/avatar.png">
+        
+      </a>
+      <div class="user-dropdown-profile">
+        <div class="user-dropdown-profile__nickname">
+          <span>dapeng</span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="user-dropdown__link cd-mb24">
+      <a class="cd-link-minor" href="/my/orders"><i class="cd-icon cd-icon-payment"></i>账户中心</a>
+      <a class="cd-link-minor" href="/settings"><i class="es-icon es-icon-setting"></i>个人设置</a>
+    </div>
+    <div class="user-dropdown__logout"><a class="cd-link-minor" href="/logout">退出登录</a></div>
+  </div>
+  <ul class="dropdown-menu hidden-lg" role="menu">
+    <div class="dropdown-header"><a class="cd-link-minor" href="/user/574">dapeng</a></div>
+    <li><a href="/my/orders"><i class="es-icon es-icon-accountwallet"></i>账户中心</a></li>
+    <li><a href="/settings"><i class="es-icon es-icon-setting"></i>个人设置</a></li>
+
+            <li class="user-nav-li-my">
+      <a href="/my/courses/learning">
+        <i class="es-icon es-icon-book"></i>我的学习
+      </a>
+    </li>
+    
+    <li class="hidden-md"><a href="/notification"><span class="pull-right num"></span><i class="es-icon es-icon-notificationson"></i>通知</a></li>
+    <li class="hidden-md"><a href="/message/"><span class="pull-right num"></span><i class="es-icon es-icon-mail"></i>私信</a></li>
+            <li class="user-nav-li-logout"><a href="/logout"><i class="es-icon es-icon-power"></i>退出登录</a></li>
+  </ul>
+</li>    
+      </ul>
+  <form class="navbar-form navbar-right hidden-xs" action="/search" method="get">
+    <div class="form-group">
+      <input class="form-control js-search" value="" name="q" placeholder="搜索">
+      <button class="button es-icon es-icon-search"></button>
+    </div>
+  </form>
+</div>  </nav>
+</header>          
+            <div
+         class="event-report"
+     data-url="/event/dispatch" data-event-name="course.view"
+     data-subject-type="course"
+     data-subject-id="2024"  data-user-id="574"></div>
+        
+  
+<!-- 3、加入后：任务式学习 -->
+<div class="container cd-container">
+  <ol class="breadcrumb breadcrumb-o">
+    <li><a href="/">首页</a></li>
+              <li class="active">React全家桶(架构) </li>
+      </ol>
+
+    <div class="es-section course-detail-section  clearfix">
+          <div class="course-detail-bottom">
+    <div class="course-detail-img">
+      <span class="tags mrm">
+              </span>
+      
+      <img class="img-responsive" src="/files/course/2020/12-27/123246e284b7845178.png" alt=" ">
+      <div class="image-overlay"></div>
+      
+      <div class="course-detail-remask">
+                                            <div class="score pull-right mb0">
+                
+  
+  
+            <i class="es-icon es-icon-staroutline"></i>
+          <i class="es-icon es-icon-staroutline"></i>
+          <i class="es-icon es-icon-staroutline"></i>
+          <i class="es-icon es-icon-staroutline"></i>
+          <i class="es-icon es-icon-staroutline"></i>
+      
+            <span class="vertical-middle">(0人评价)</span>
+          </div>
+              </div>
+    </div>
+    <div class="course-detail-info">
+      <div class="course-detail-info__text js-course-detail-info">
+                <div class="course-detail-info__title">
+                      React全家桶(架构)
+                  </div>
+                                        <div class=" cd-mb16 ">
+          <span class="course-detail__label vertical-sub">价格</span>
+<span class="course-detail-price-money vertical-sub mrm">
+            <b class="pirce-num"><span class="cd-text-lg">¥&nbsp;</span>9200.00</b>
+      </span>
+
+        </div>
+
+                <div class="course-detail-gray course-detail-gray--market  not-activity ">
+                                          
+          <div class="hidden-xs common-line-height">
+            <span class="course-detail-title">学习有效期</span>
+                          <span class="gray-dark course-detail-expiry">
+                740 天（随到随学）
+
+              </span>
+                      </div>
+
+          
+          
+                  </div>
+
+        <div class="course-detail-section-responsive visible-xs visible-sm clearfix">
+          <ul class="clearfix">
+            <!--营销页显示-->
+                          <li class="js-unfavorite-btn hidden" id="unfavorite-btn" data-target-type="course" data-target-id="2020">
+                <a class="color-primary" href="javascript:;" data-toggle="tooltip" data-placement="top" title="已收藏"
+                   data-trigger="hover">
+                  <i class="es-icon es-icon-favorite color-primary"></i>
+                  <br/>
+                  已收藏
+                </a>
+              </li>
+              <li class="js-favorite-btn " id="favorite-btn" data-target-type="course" data-target-id="2020">
+                <a class="" href="javascript:;" data-toggle="tooltip" data-placement="top" title="收藏"
+                   data-trigger="hover">
+                  <i class="es-icon es-icon-favoriteoutline"></i>
+                  <br/>
+                  收藏
+                </a>
+              </li>
+            
+            <li class="es-share top js-es-share">
+              <a class=" dropdown-toggle" href="" data-toggle="dropdown" title="分享">
+                <i class="es-icon es-icon-share"></i>
+                <br/>
+                分享
+              </a>
+                
+            
+<div class="dropdown-menu  js-social-share-params" data-title="React全家桶(架构)" data-summary="2021年12月https://gitee.com/zhufengpeixun/zhufengrea..." data-message="我正在学习《React全家桶(架构)》，收获巨大哦，一起来学习吧！" data-url="http://www.javascriptpeixun.cn/course/2024" data-picture="http://www.javascriptpeixun.cn/files/course/2020/12-27/123246e284b7845178.png">
+  
+  <a href="javascript:;" class="js-social-share" data-cmd="weixin" title="分享到微信" data-share="weixin" data-qrcode-url="/common/qrcode?text=http%3A//www.javascriptpeixun.cn/course/2024"><i class="es-icon es-icon-weixin"></i></a>
+  <a href="javascript:;" class="js-social-share" data-cmd="tsina" title="分享到新浪微博" data-share="weibo"><i class="es-icon es-icon-weibo"></i></a>
+  <a href="javascript:;" class="js-social-share" data-cmd="qq" title="分享到QQ好友" data-share="qq"><i class="es-icon es-icon-qq"></i></a>
+  <a href="javascript:;" class="js-social-share" data-cmd="qzone" title="分享到QQ空间" data-share="qzone"><i class="es-icon es-icon-qzone"></i></a>
+
+</div>
+            </li>
+
+            
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="course-detail-info__btn js-course-header-operation">
+        <ul class="course-operation course-operation--market hidden-xs hidden-sm clearfix mb0">
+          <li class="es-qrcode top hidden-xs mrl" data-url="/course/2024/qrcode">
+            <a class="cd-link-assist" href="javascript:;"><i class="es-icon es-icon-saoyisao course-operation__icon"></i><span class="cd-text-sm cd-text-medium">扫一扫</span></a>
+            <span class="qrcode-popover">
+              <img class="mb0" src="" alt="">扫二维码继续学习 二维码时效为半小时
+            </span>
+          </li>
+
+                    <li class="es-share es-share-item top mrl js-es-share">
+            <a class="dropdown-toggle cd-link-assist" href="javascript:;" data-toggle="dropdown">
+              <i class="es-icon es-icon-share course-operation__icon"></i><span class="cd-text-sm cd-text-medium">分享</span>
+            </a>
+              
+            
+<div class="dropdown-menu  js-social-share-params" data-title="React全家桶(架构)" data-summary="2021年12月https://gitee.com/zhufengpeixun/zhufengrea..." data-message="我正在学习《React全家桶(架构)》，收获巨大哦，一起来学习吧！" data-url="http://www.javascriptpeixun.cn/course/2024" data-picture="http://www.javascriptpeixun.cn/files/course/2020/12-27/123246e284b7845178.png">
+  
+  <a href="javascript:;" class="js-social-share" data-cmd="weixin" title="分享到微信" data-share="weixin" data-qrcode-url="/common/qrcode?text=http%3A//www.javascriptpeixun.cn/course/2024"><i class="es-icon es-icon-weixin"></i></a>
+  <a href="javascript:;" class="js-social-share" data-cmd="tsina" title="分享到新浪微博" data-share="weibo"><i class="es-icon es-icon-weibo"></i></a>
+  <a href="javascript:;" class="js-social-share" data-cmd="qq" title="分享到QQ好友" data-share="qq"><i class="es-icon es-icon-qq"></i></a>
+  <a href="javascript:;" class="js-social-share" data-cmd="qzone" title="分享到QQ空间" data-share="qzone"><i class="es-icon es-icon-qzone"></i></a>
+
+</div>
+          </li>
+          <!--营销页显示-->
+                                <li class="js-unfavorite-btn mrl hidden " id="unfavorite-btn" data-target-type="course" data-target-id="2020">
+              <a class="cd-link-assist" href="javascript:;"><i class="es-icon es-icon-favorite color-danger course-operation__icon"></i><span class="cd-text-sm cd-text-medium">已收藏</span>
+              </a>
+            </li>
+            <li class="js-favorite-btn mrl " id="favorite-btn" data-target-type="course" data-target-id="2020">
+              <a class="cd-link-assist" href="javascript:;"><i class="es-icon es-icon-favoriteoutline course-operation__icon"></i><span class="cd-text-sm cd-text-medium">收藏</span>
+              </a>
+            </li>
+          
+
+          
+          
+                  </ul>
+        <div class="text-right buy-btn-group course-operation-btn  course-classroom-tip">
+                                    <a class="cd-btn cd-btn-primary" href="/my/course/2024">
+                去学习
+              </a>
+                              </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+  
+
+  <div class="container cd-container">
+    <div class="row cd-row">
+      <div class="col-lg-9 col-md-8 course-detail-content">
+              
+        
+
+        <section class="es-section">
+          <div class="nav-btn-tab">
+            	          		          <ul class="nav nav-tabs nav-tabs--course  " role="tablist">
+                                <li role="presentation" id="tasks"
+          class=" ">
+        <a
+                      href="/course/2024/tasks"
+                  >
+          目录
+                            </a>
+      </li>
+                                    <li role="presentation" id="notes"
+          class=" ">
+        <a
+                      href="/course/2024/notes"
+                  >
+          笔记
+                                              <small>(4)</small>
+                              </a>
+      </li>
+                                    <li role="presentation" id="reviews"
+          class=" ">
+        <a
+                      href="/course/2024/reviews"
+                  >
+          评价
+                                              <small>(0)</small>
+                              </a>
+      </li>
+                                    <li role="presentation" id="summary"
+          class="active ">
+        <a
+                      href="/course/2024"
+                  >
+          介绍
+                            </a>
+      </li>
+                                    <li role="presentation" id="certificate"
+          class=" hidden">
+        <a
+                      href="/course/2024/certificate"
+                  >
+          课程证书
+                            </a>
+      </li>
+        </ul>	          
+
+          </div>
+                      
+
+<div class="es-piece">
+  <div class="piece-header">课程介绍</div>
+  <div class="piece-body p-lg clearfix">
+    <p>2021年12月</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufengreact202112</p>
+
+<p>2021年10月</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufengreact202110</p>
+
+<p>2021年7月</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufengreact202107/commits/master</p>
+
+<p>2021年5月</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufengreact202105</p>
+
+<p>2020年12月</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufeng-react-202012</p>
+
+<p>项目实战</p>
+
+<p>客户端</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufengketang202101-client</p>
+
+<p>服务器端</p>
+
+<p>https://gitee.com/zhufengpeixun/zhufengketang202101-server</p>
+
+<p> </p>
+
+<p>第4章节：202010</p>
+
+<p><a href="https://gitee.com/zhufengpeixun/zhufengreact202010">https://gitee.com/zhufengpeixun/zhufengreact202010</a></p>
+
+<p>第一章</p>
+
+<p> <a href="https://gitee.com/zhufengpeixun/zhufengreact2020">https://gitee.com/zhufengpeixun/zhufengreact2020</a></p>
+
+<p>第二章</p>
+
+<p><a href="https://gitee.com/zhufengpeixun/zhufengreact202007">https://gitee.com/zhufengpeixun/zhufengreact202007</a></p>
+
+<p>第三章</p>
+
+<p>typescript</p>
+
+<p><a href="https://gitee.com/zhufengpeixun/zhufengtypescript202007">https://gitee.com/zhufengpeixun/zhufengtypescript202007</a></p>
+
+<p>typescript+react</p>
+
+<p><a href="https://gitee.com/zhufengpeixun/zhufengtsreact202009">https://gitee.com/zhufengpeixun/zhufengtsreact202009</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><span style="color:#d35400;">如果遇到不能给vdom添加新的属性，需要这么处理</span></p>
+
+<p><span style="color:#d35400;">Cannot add property classInstance, object is not extensible</span></p>
+
+<p>window</p>
+
+<p>修改 package.json</p>
+
+<p>"scripts": {<br />
+    "start": "<span style="color:#d35400;">set DISABLE_NEW_JSX_TRANSFORM=true&amp;&amp;</span>react-app-rewired start",<br />
+    "build": "<span style="color:#d35400;">set DISABLE_NEW_JSX_TRANSFORM=true&amp;&amp;</span>react-app-rewired build"</p>
+
+<p>}</p>
+
+<p>mac </p>
+
+<p>"scripts": {<br />
+    "start": "<span style="color:#d35400;">export </span>DISABLE_NEW_JSX_TRANSFORM=true&amp;&amp;react-app-rewired start",<br />
+    "build": "<span style="color:#d35400;">export </span>DISABLE_NEW_JSX_TRANSFORM=true&amp;&amp;react-app-rewired build"</p>
+
+<p>}</p>
+
+  </div>
+</div>
+
+</section>
+
+
+
+  <div class="panel panel-default hidden-xs">
+    <div class="panel-heading ">
+      <h3 class="panel-title">目录</h3>
+    </div>
+    <div class="panel-body">
+      <div class="js-tasks-list">
+  
+  <div class="js-tasks-show"
+       data-url="/course/2024/task/list/render/default">
+  </div>
+</div>
+
+      <div class="js-only-display-one-page"></div>
+        <div class="text-center pt10 border-top-gray-lighter course-tasks-show-more hidden">
+          <a href="/course/2024/tasks " class="link-dark">查看全部</a>
+        </div>
+    </div>
+  </div>
+
+                  </section>
+
+                <div class="panel panel-default hidden-xs pt10">
+      <div class="course-list">
+    <div class="row">
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="course-item">
+                  <div class="course-img">
+                    <a  href="/course/2624?ref=relatedCourseSets"  target="_blank">
+                                                                    <span class="tags"><span class="tag-serialing"></span></span>
+                                                                  <img src="/assets/img/default/lazyload_course.png?version=21.1.1" alt="webpack全家桶(架构)" class="img-responsive" data-echo="/files/course/2020/12-27/1236182baa4e727118.png" />
+                    </a>
+                  </div>
+                  <div class="course-info">
+                    <div class="title">
+                      <a class="link-dark"  href="/course/2624?ref=relatedCourseSets"                        target="_blank">
+                        webpack全家桶(架构)
+                      </a>
+                    </div>
+                    <div class="metas clearfix">
+                                              <span class="num">
+                                                  </span>
+                                            <span  class="comment" ><i class="es-icon es-icon-textsms"></i>0</span>
+                                                                  </div>
+                  </div>
+                </div>
+            </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="course-item">
+                  <div class="course-img">
+                    <a  href="/course/2623?ref=relatedCourseSets"  target="_blank">
+                                                                                        <img src="/assets/img/default/lazyload_course.png?version=21.1.1" alt="Node(202011)(架构)" class="img-responsive" data-echo="/files/course/2020/12-27/1235313b7111471524.png" />
+                    </a>
+                  </div>
+                  <div class="course-info">
+                    <div class="title">
+                      <a class="link-dark"  href="/course/2623?ref=relatedCourseSets"                        target="_blank">
+                        Node(202011)(架构)
+                      </a>
+                    </div>
+                    <div class="metas clearfix">
+                                              <span class="num">
+                                                  </span>
+                                            <span  class="comment" ><i class="es-icon es-icon-textsms"></i>0</span>
+                                                                  </div>
+                  </div>
+                </div>
+            </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="course-item">
+                  <div class="course-img">
+                    <a  href="/course/2271?ref=relatedCourseSets"  target="_blank">
+                                                                    <span class="tags"><span class="tag-serialing"></span></span>
+                                                                  <img src="/assets/img/default/lazyload_course.png?version=21.1.1" alt="Vue(202010)(架构)" class="img-responsive" data-echo="/files/course/2020/12-27/12295200b6e9452019.png" />
+                    </a>
+                  </div>
+                  <div class="course-info">
+                    <div class="title">
+                      <a class="link-dark"  href="/course/2271?ref=relatedCourseSets"                        target="_blank">
+                        Vue(202010)(架构)
+                      </a>
+                    </div>
+                    <div class="metas clearfix">
+                                              <span class="num">
+                                                  </span>
+                                            <span  class="comment" ><i class="es-icon es-icon-textsms"></i>0</span>
+                                                                  </div>
+                  </div>
+                </div>
+            </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="course-item">
+                  <div class="course-img">
+                    <a  href="/course/2176?ref=relatedCourseSets"  target="_blank">
+                                                                    <span class="tags"><span class="tag-finished"></span></span>
+                                                                  <img src="/assets/img/default/lazyload_course.png?version=21.1.1" alt="Node(202009)(架构)" class="img-responsive" data-echo="/files/course/2020/12-27/123455feee70548009.png" />
+                    </a>
+                  </div>
+                  <div class="course-info">
+                    <div class="title">
+                      <a class="link-dark"  href="/course/2176?ref=relatedCourseSets"                        target="_blank">
+                        Node(202009)(架构)
+                      </a>
+                    </div>
+                    <div class="metas clearfix">
+                                              <span class="num">
+                                                  </span>
+                                            <span  class="comment" ><i class="es-icon es-icon-textsms"></i>0</span>
+                                                                  </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+</div>
+    </div>
+  
+      </div>
+
+      <div class="col-lg-3 col-md-4 course-sidebar">
+
+        
+
+                                                       <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">授课教师</h3>
+    </div>
+    <div class="panel-body">
+              <div class="media media-default">
+          <div class="media-left">
+            <a class="js-user-card" href="/user/3"
+               data-card-url="/user/3/card/show"
+               data-user-id="3"
+               data-original-title="" title="">
+              <img class="avatar-md" src="/files/default/2018/09-18/160636c7963e829352.png"></a>
+          </div>
+          <div class="media-body">
+            <div class="title">
+                            <a class="link-dark link-dark" href="/user/3">admin</a>
+                          </div>
+            <div class="content">讲师</div>
+          </div>
+        </div>
+          </div>
+  </div>
+
+                                                                    <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">课程特色</h3>
+    </div>
+    <div class="panel-body pt0">
+      <div class="course-features pl0">
+                              <div class="course-features-item clearfix">
+                    <div class="media">
+            <div class="media-left prm">
+                <span class="color-lump bg-primary"> <i class="es-icon es-icon es-icon-video media-logo"></i>
+                </span>
+            </div>
+            <div class="media-body media-middle">视频(313)</div>
+          </div>
+                      </div>
+                        </div>
+    </div>
+  </div>
+
+                                                                  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">最新学员</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="user-avatar-list clearfix">
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/20" data-card-url="/user/20/card/show"
+            data-user-id="20" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2018/12-06/1304331bdc8a366305.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/30" data-card-url="/user/30/card/show"
+            data-user-id="30" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2019/02-21/175522abdbed233362.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/176" data-card-url="/user/176/card/show"
+            data-user-id="176" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/678" data-card-url="/user/678/card/show"
+            data-user-id="678" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/699" data-card-url="/user/699/card/show"
+            data-user-id="699" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2019/12-05/2019335bff27784700.jpg">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/736" data-card-url="/user/736/card/show"
+            data-user-id="736" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1314" data-card-url="/user/1314/card/show"
+            data-user-id="1314" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1330" data-card-url="/user/1330/card/show"
+            data-user-id="1330" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1408" data-card-url="/user/1408/card/show"
+            data-user-id="1408" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2019/09-09/19123757f65d810067.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1709" data-card-url="/user/1709/card/show"
+            data-user-id="1709" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1783" data-card-url="/user/1783/card/show"
+            data-user-id="1783" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1787" data-card-url="/user/1787/card/show"
+            data-user-id="1787" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1833" data-card-url="/user/1833/card/show"
+            data-user-id="1833" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1882" data-card-url="/user/1882/card/show"
+            data-user-id="1882" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2019/08-29/18571391eb0d394773.jpeg">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1910" data-card-url="/user/1910/card/show"
+            data-user-id="1910" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1913" data-card-url="/user/1913/card/show"
+            data-user-id="1913" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/1972" data-card-url="/user/1972/card/show"
+            data-user-id="1972" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2019/09-23/000158643d58608384.jpeg">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/2030" data-card-url="/user/2030/card/show"
+            data-user-id="2030" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/3964" data-card-url="/user/3964/card/show"
+            data-user-id="3964" data-original-title="" title="">
+            <img class="avatar-sm" src="/assets/img/default/avatar.png">
+            
+          </a>
+        </li>
+              <li>
+          <a class="user-dropdown-info__avatar js-user-card" href="/user/4450" data-card-url="/user/4450/card/show"
+            data-user-id="4450" data-original-title="" title="">
+            <img class="avatar-sm" src="/files/user/2021/03-17/1519517407f5405143.jpg">
+            
+          </a>
+        </li>
+          </ul>
+  </div>
+</div>
+
+                                                                    
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="es-icon es-icon-recentactors"></i>学员动态</h3>
+  </div>
+
+  <div class="panel-body">
+                          <div class="media media-number-o color-gray text-overflow">
+                      <a class="link-dark " href="/user/3658" target="_blank">李朋飞</a>
+      
+            
+  完成了 <a class="link-dark" href="/course/2024/task/225360/show?from=student_status" title="63.实现all和取消任务">63.实现all和取消任务</a>
+
+          </div>
+                                 <div class="media media-number-o color-gray text-overflow">
+                      <a class="link-dark " href="/user/3658" target="_blank">李朋飞</a>
+      
+            
+  开始学习 <a class="link-dark" href="/course/2024/task/225360/show?from=student_status" title="63.实现all和取消任务">63.实现all和取消任务</a>
+
+          </div>
+                                 <div class="media media-number-o color-gray text-overflow">
+                      <a class="link-dark " href="/user/1952" target="_blank">吴永辉</a>
+      
+            
+  完成了 <a class="link-dark" href="/course/2024/task/262379/show?from=student_status" title="53.使用dva">53.使用dva</a>
+
+          </div>
+                                 <div class="media media-number-o color-gray text-overflow">
+                      <a class="link-dark " href="/user/1952" target="_blank">吴永辉</a>
+      
+            
+  开始学习 <a class="link-dark" href="/course/2024/task/262379/show?from=student_status" title="53.使用dva">53.使用dva</a>
+
+          </div>
+                                 <div class="media media-number-o color-gray text-overflow">
+                      <a class="link-dark " href="/user/1952" target="_blank">吴永辉</a>
+      
+            
+  开始学习 <a class="link-dark" href="/course/2024/task/262415/show?from=student_status" title="54.实现dva函数">54.实现dva函数</a>
+
+          </div>
+               
+      </div>
+
+</div>
+                                    </div>
+
+    </div>
+  </div>
+
+        
+    
+
+  
+
+                                                  <div class="es-footer-link">
+  <div class="container">
+    <div class="row">
+      
+<div class="col-md-8 footer-main clearfix">
+  <div class="link-item ">
+  <h3>关于我们</h3>
+  <ul>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/" target="_blank">珠峰培训官网</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/" target="_blank">珠峰备站</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/jing/contactus.html" target="_blank">联系我们</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/kefudayi/" target="_blank">客服答疑</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/story/" target="_blank">学员故事</a>
+      </li>
+      </ul>
+</div>
+
+  <div class="link-item ">
+  <h3></h3>
+  <ul>
+          <li>
+        <a href="" target="_self"></a>
+      </li>
+      </ul>
+</div>
+
+  <div class="link-item ">
+  <h3>友情链接</h3>
+  <ul>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/customize/js/index.html" target="_blank">HTML5培训</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/customize/js/index.html" target="_blank">JavaScript培训</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/customize/node/index.html" target="_blank">高级Node培训</a>
+      </li>
+          <li>
+        <a href="http://www.reactpeixun.com/" target="_blank">React教程中文网</a>
+      </li>
+          <li>
+        <a href="http://www.nodepeixun.com/" target="_blank">Node教程中文网</a>
+      </li>
+      </ul>
+</div>
+
+  <div class="link-item hidden-xs">
+  <h3></h3>
+  <ul>
+          <li>
+        <a href="" target="_self"></a>
+      </li>
+      </ul>
+</div>
+
+  <div class="link-item hidden-xs">
+  <h3>web前端培训</h3>
+  <ul>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/html5peixun/" target="_blank">HTML5培训课程</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/NodeJspeixun" target="_blank">高级Node培训</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/FECourseList/" target="_blank">全部课程目录</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/customize/sucaitexiao/" target="_blank">素材特效</a>
+      </li>
+          <li>
+        <a href="http://www.zhufengpeixun.cn/bbs2014/forum.php" target="_blank">珠峰备站论坛</a>
+      </li>
+      </ul>
+</div>
+
+</div>
+
+<div class="col-md-4 footer-logo hidden-sm hidden-xs">
+  <a class="" href="" target="_blank"><img src="/files/system/block_picture_1537244193.png?version=8.3.6" alt="珠峰培训"></a>
+  <div class="footer-sns">
+        <a href="https://weibo.com/2682635851/profile?topnav=1&amp;wvr=6" target="_blank"><i class="es-icon es-icon-weibo"></i></a>
+            <a class="qrcode-popover top">
+      <i class="es-icon es-icon-weixin"></i>
+      <div class="qrcode-content">
+        <img src="/files/system/block_picture_1537245227.jpg?version=8.3.6" alt="">  
+      </div>
+    </a>
+            <a class="qrcode-popover top">
+      <i class="es-icon es-icon-apple"></i>
+      <div class="qrcode-content">
+        <img src="/files/system/block_picture_1537245253.png?version=8.3.6" alt=""> 
+      </div>
+    </a>
+            <a class="qrcode-popover top">
+      <i class="es-icon es-icon-android"></i>
+      <div class="qrcode-content">
+        <img src="/files/system/block_picture_1537245269.png?version=8.3.6" alt=""> 
+      </div>
+    </a>
+      </div>
+</div>
+
+
+
+    </div>
+  </div>
+</div>  
+<footer class="es-footer">
+  <div class="copyright">
+    <div class="container">
+        Powered by <a href="http://www.edusoho.com/" target="_blank">EduSoho v21.1.1</a>
+  ©2014-2022
+
+      <script type="text/javascript" src="https://s96.cnzz.com/z_stat.php?id=1277598592&web_id=1277598592"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140025935-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140025935-1');
+</script>
+
+
+              <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analytics.qiqiuyun.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '633']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+      
+      <a class="mlm" href="/archive/course">课程存档</a>
+      <div class="mts">
+                  课程内容版权均归 <a href="/">
+  珠峰培训
+</a> 所有
+
+                          <a class="mlm" href=https://beian.miit.gov.cn target="_blank">
+            京ICP备16047179号-1
+          </a>
+              </div>
+
+      
+          </div>
+  </div>
+</footer>
+    
+        
+      </div>
+
+            
+
+
+<!-- 侧边栏快捷操作 -->
+<div class="es-bar hidden-xs">
+
+  <!-- 左侧列表 -->
+  <div class="es-bar-menu">
+  <ul class="bar-menu-top">
+            <li data-id="#bar-user-center" class="bar-user">
+    <a href="javascript:;" data-url="/esbar/my/study_center">学<br>习<br>中<br>心
+          </a>
+  </li>
+        <li data-id="#bar-homework" data-toggle="tooltip" data-placement="left" title="我的考试/作业" data-trigger="hover" data-container=".es-bar">
+  <a href="javascript:;" data-url="/esbar/my/practice/finished">
+    <i class="es-icon es-icon-edit"></i>
+  </a>
+</li>    <li data-id="#bar-course-list" data-placement="left" data-toggle="tooltip" title="我的课程/班级" data-trigger="hover" data-container=".es-bar">
+  <a data-url="/esbar/my/course" href="javascript:;">
+    <i class="es-icon es-icon-book">
+    </i>
+  </a>
+</li>      <li data-id="#bar-message" data-toggle="tooltip" data-placement="left" title="通知" data-trigger="hover" data-container=".es-bar">
+    <a href="javascript:;" data-url="/esbar/my/notify">
+              <i class="es-icon es-icon-notifications"></i>
+          </a>
+  </li>
+  </ul>
+  <ul class="bar-menu-sns">
+            <li class="popover-btn bar-qq-btn" data-container=".bar-qq-btn" data-title="QQ客服及QQ群" data-content-element="#bar-qq-content">
+    <a><i class="es-icon es-icon-qq"></i></a>
+  </li>
+        <li class="popover-btn bar-phone-btn" data-container=".bar-phone-btn" data-title="电话客服" data-content-element="#bar-phone-content">
+    <a><i class="es-icon es-icon-phone"></i></a>
+  </li>
+        <li class="popover-btn bar-weixin-btn" data-container=".bar-weixin-btn" data-content-element="#bar-weixin-content">
+    <a><i class="es-icon es-icon-weixin"></i></a>
+  </li>
+    
+          <li data-toggle="tooltip" data-placement="left" title="手机端" data-trigger="hover" data-container=".es-bar">
+        <a href="/mobile/" target="_blank"><i class="es-icon es-icon-phone1"></i></a>
+      </li>
+        <li class="go-top" style="margin:-10px auto 0 auto;" data-toggle="tooltip" data-placement="left" title="回到顶端" data-trigger="hover" data-container=".es-bar">
+      <a href="javascript:;">
+        <i class="es-icon es-icon-keyboardarrowup" style="margin-bottom:-8px"></i>
+        <span class="text-sm">TOP</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <!-- 列表内容 -->
+      <!-- 通知 -->
+    <div class="es-bar-main" id="bar-message">
+      <div class="bar-main-header">
+  <a href="javascript:;" class="js-bar-shrink link-dark"><i class="es-icon es-icon-arrowforward"></i></a>
+      通知
+</div>
+
+<div class="bar-main-body">
+    <ul class="bar-message">
+    
+      </ul>
+</div>
+    </div>
+
+    <!-- 考试/作业 -->
+    <div class="es-bar-main" id="bar-homework">
+      <div class="bar-main-header">
+  <a href="javascript:;" class="js-bar-shrink link-dark"><i class="es-icon es-icon-arrowforward"></i></a>
+      我的考试/作业
+</div>
+
+<div class="bar-main-body">
+    <div class="text-center">
+    <div class="btn-group btn-action">
+      <a href="javascript:;" data-url="/esbar/my/practice/finished" class="btn btn-primary " id="bar-practice-finish"><span>已批阅</span></a>
+      <a href="javascript:;" data-url="/esbar/my/practice/reviewing" class="btn btn-primary active" id="bar-practice-review">已提交</a>
+    </div>
+  </div>
+  <div class="bar-homework">
+    
+      </div>
+</div>
+    </div>
+
+    <!-- 课程/班级 -->
+    <div class="es-bar-main" id="bar-course-list">
+      <div class="bar-main-header">
+  <a href="javascript:;" class="js-bar-shrink link-dark"><i class="es-icon es-icon-arrowforward"></i></a>
+    我的课程/班级
+</div>
+
+<div class="bar-main-body">
+    <div class="text-center">
+    <div class="btn-group btn-action">
+      <a href="javascript:;" data-url="/esbar/my/course" class="btn btn-primary active"
+         id="bar-course-btn">课程</a>
+      <a href="javascript:;" data-url="/esbar/my/classroom" class="btn btn-primary "
+         id="bar-classroom-btn">班级</a>
+    </div>
+  </div>
+
+  <div id="bar-my-course">
+          </div>
+</div>
+    </div>
+
+    <!-- 学习中心 -->
+    <div class="es-bar-main" id="bar-user-center">
+          </div>
+
+    <!-- 学习历史 -->
+    
+  
+    <div class="bar-popover-content" style="display:none;">
+    <div id="bar-qq-content">
+          <div class="row mtm">
+                    <div class="mbm text-overflow col-xs-12">
+                          <a class="link-dark" href="http://wpa.qq.com/msgrd?v=3&uin=&lt;a href=&quot;http://wpa.qq.com/msgrd?V=1&amp;amp;Uin=1144709265&quot; target=&quot;blank&quot;&gt;QQ咨询:1144709265&lt;/a&gt;&site=qq&menu=yes" target="_blank">
+                            <img class="mrs" src="/assets/v2/img/bar_qq.png?version=21.1.1" alt="" title="点击这里给我发消息" alt="">
+                <span alt="" title="珠峰培训">珠峰培训</span>
+              </a>
+            </div>
+              </div>
+          <hr>
+          <div class="row">
+                  <div class="mbm col-xs-12">
+            <p class="text-overflow">
+              <img class="mrs" src="/assets/v2/img/bar_qq_group.png?version=21.1.1" alt="">
+              <span alt="" title="珠峰前端架构交流群">珠峰前端架构交流群</span>
+            </p>
+
+            
+                          <p class="text-overflow">
+                <a target="_blank" href="https://jq.qq.com/?_wv=1027&amp;k=UNzsio6L" rel="noreferrer noopener"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="珠峰前端架构交流群" title="珠峰前端架构交流群" /></a>
+              </p>
+            
+          </div>
+              </div>
+        </div>
+
+    <div id="bar-phone-content">
+              <p class="mtm"><i class="es-icon es-icon-accesstime mrm"></i>工作时间：9:30 - 21:00</p>
+                    <p class="mtm"><i class="es-icon es-icon-phone mrm"></i>珠峰培训：400-180-6960</p>
+                    <p class="mtm"><i class="es-icon es-icon-mail mrm"></i>邮箱： <a class="link-dark" href="mailto:1144709265@qq.com">1144709265@qq.com</a></p>
+          </div>
+
+          <div id="bar-weixin-content">
+        <img width="110" class="img-responsive" src="/files/system/2019/03-12/1222328ae595337597.png?time=1603250273?version=21.1.1" alt="">
+      </div>
+      </div>
+</div>      
+        
+  
+        
+      
+  <div id="login-modal" class="modal" data-url="/login/ajax"></div>
+  <div id="modal" class="modal"></div>
+  <div id="attachment-modal" class="modal"></div>
+
+    
+
+  
+
+
+  <script>
+  if (typeof app === 'undefined') {
+      var app = {};
+  }
+  app.version = '21.1.1';
+  app.httpHost = 'http://www.javascriptpeixun.cn';
+  app.basePath = 'http://www.javascriptpeixun.cn';
+  app.theme = 'jianmo';
+
+    
+  var CLOUD_FILE_SERVER = ""; 
+
+  app.config = {"api":{"weibo":{"key":""},"qq":{"key":""},"douban":{"key":""},"renren":{"key":""}},"loading_img_path":"\/assets\/img\/default\/loading.gif?version=21.1.1"};
+
+  app.arguments = {};
+      
+  app.scripts = null;
+
+  app.fileSingleSizeLimit = 10;
+  app.uploadUrl = '/file/upload';
+  app.imgCropUrl = '/file/img/crop';
+  app.lessonCopyEnabled = '1';
+  app.cloudSdkBaseUri = '//service-cdn-ali.qiqiuyun.net';
+  app.cloudDisableLogReport = 0;
+  app.cloudPlayerSdkUrl = '//service-cdn-ali.qiqiuyun.net/js-sdk/sdk-v1.js?16413495';
+  app.cloudPlayServer = '';
+  app.cloudVideoPlayerSdkUrl = '//service-cdn-ali.qiqiuyun.net/js-sdk-v2/sdk-v1.js?16413495';
+  app.cloudOldUploaderSdkUrl = '//service-cdn-ali.qiqiuyun.net/js-sdk/uploader/sdk-v1.js?16413495';
+  app.cloudOldDocumentSdkUrl = '//service-cdn-ali.qiqiuyun.net/js-sdk/document-player/v7/viewer.html?16413495';
+  app.lang = 'zh_CN';
+</script>
+
+<script src="/translations/translator.min.js?version=21.1.1"></script>
+
+  <script src="/translations/zh_CN.js?version=21.1.1"></script>
+
+       <script src="/static-dist/libs/base.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/common.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/main.js?version=21.1.1"></script>
+        <script src="/static-dist/jianmotheme/js/main.js?version=21.1.1"></script>
+        <script src="/static-dist/libs/easy-pie-chart/dist/jquery.easypiechart.js?version=21.1.1"></script>
+        <script src="/static-dist/libs/excanvas-compiled.js?version=21.1.1"></script>
+        <script src="/static-dist/libs/jquery-countdown.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/courseset/show/index.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/default/header/index.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/course/header-top/index.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/share/index.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/announcement/announcement-swiper-slide/index.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/courseset/show/tasks/index.js?version=21.1.1"></script>
+        <script src="/static-dist/libs/perfect-scrollbar.js?version=21.1.1"></script>
+        <script src="/static-dist/app/js/es-bar/index.js?version=21.1.1"></script>
+  
+<script type="text/javascript">
+  window.seajsBoot && window.seajsBoot();
+</script>
+
+
+</body>
+</html>

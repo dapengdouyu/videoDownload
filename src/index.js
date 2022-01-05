@@ -82,9 +82,14 @@ async function download(segments, newName) {
     `总列表:${AllIndex}/${AllLen}\t下载成功:${newName}\t${index}/${len}`
   );
 }
-async function getDir(cid = "", dir = "") {
+async function getDir(cid = "") {
   try {
+    
     const url = `http://www.javascriptpeixun.cn/course/${cid}`;
+    const htmlTitle = await fetch
+    .get(`${url}`)
+    .then((data) => data.data);
+    const dir = cheerio.load(htmlTitle, { ignoreWhitespace: true })('.breadcrumb .active').text().trim();
     const html = await fetch
       .get(`${url}/task/list/render/default`)
       .then((data) => data.data);
@@ -92,7 +97,7 @@ async function getDir(cid = "", dir = "") {
       chapter = "",
       unit = "",
       CIndex = 0;
-    const baseUrl = path.join(__dirname, "../珠峰架构");
+    const baseUrl = path.join(__dirname, "../珠峰架构",dir);
     const videoContext = JSON.parse($(".js-hidden-cached-data").text());
     AllLen = videoContext.length;
     for (let item of videoContext) {
@@ -132,4 +137,4 @@ async function getDir(cid = "", dir = "") {
   }
 }
 
-getDir("2637", "一线大厂前端面试题年末大汇总");
+getDir("2024");
