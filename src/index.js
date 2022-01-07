@@ -10,7 +10,7 @@ const path = require("path");
 const ora = require("ora");
 const v2 = require("./v2");
 const asyncPool = require("tiny-async-pool");
-const { blue, red, greenBright } = require("chalk");
+const { yellowBright,blueBright,cyanBright,redBright, greenBright } = require("chalk");
 const VIDEO_TYPE = "mp4";
 let pathVideoDB = "",
   AllIndex = 0,
@@ -76,13 +76,13 @@ async function download(segments, newName) {
         cipher.on("error", (error) => {
           throw error;
         });
-        spinner.text = `${blue("总列表:")}${AllIndex}/${AllLen}\t${blue(
+        spinner.text = `${blueBright("总列表:")}${AllIndex}/${AllLen}\t${blueBright(
           "下载文件:"
-        )}${newName} ${greenBright("下载进度:")}${index++}/${len}`;
+        )}${newName} ${blueBright("下载进度:")}${index++}/${len}`;
         return Buffer.concat([cipher.update(content), cipher.final()]);
       } catch (error) {
         spinner.fail(
-          `${blue("总列表:")}${AllIndex}/${AllLen}\t${red(
+          `${redBright("总列表:")}${AllIndex}/${AllLen}\t${redBright(
             "下载失败:"
           )}${newName}`
         );
@@ -94,7 +94,7 @@ async function download(segments, newName) {
     await transformVideo(pathVideoDB, outputData);
     spinner.stop();
     spinner.succeed(
-      `${blue("总列表:")}${AllIndex}/${AllLen}\t${greenBright(
+      `${greenBright("总列表:")}${AllIndex}/${AllLen}\t${greenBright(
         "下载成功:"
       )}${newName} ${greenBright("下载进度:")}${index}/${len}`
     );
@@ -164,7 +164,7 @@ async function getDir(cid = "") {
         pathVideoDB = path.join(baseUrl, unit, newTitle);
         if (fs.existsSync(path.join(baseUrl, unit, newTitle))) {
           console.log(
-            `${blue("总列表:")}${AllIndex}/${AllLen}\t${blue(
+            `${yellowBright("总列表:")}${AllIndex}/${AllLen}\t${yellowBright(
               "课程已存在:"
             )}${newTitle}`
           );
@@ -172,7 +172,7 @@ async function getDir(cid = "") {
         }
         if (status !== "published") {
           console.log(
-            `${blue("总列表:")}${AllIndex}/${AllLen}\t${blue(
+            `${yellowBright("总列表:")}${AllIndex}/${AllLen}\t${yellowBright(
               "课程未发布"
             )}:${newTitle}`
           );
@@ -194,14 +194,14 @@ async function getDir(cid = "") {
         }
         pathVideoDB = path.join(baseUrl, unit);
         console.log(
-          `${blue("总列表:")}${AllIndex}/${AllLen}\t${blue("非文件")}:${unit}`
+          `${cyanBright("总列表:")}${AllIndex}/${AllLen}\t${cyanBright("非文件")}:${unit}`
         );
         await fs.ensureDir(pathVideoDB);
       }
     }
   } catch (error) {
-    console.log("报错", error.message.data);
+    console.log("报错", error.message);
   }
 }
 
-getDir("2033");
+getDir("2024");
