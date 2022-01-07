@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env FFMPEG_BIN='/usr/local/Cellar/ffmpeg/4.4_2/bin/ffmpeg'&&node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "axios": "^0.24.0",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
+    "cross-env": "^7.0.3",
     "ffmpeg-static": "^4.4.1",
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^10.0.0",
