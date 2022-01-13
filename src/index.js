@@ -10,7 +10,13 @@ const path = require("path");
 const ora = require("ora");
 const v2 = require("./v2");
 const asyncPool = require("tiny-async-pool");
-const { yellowBright,blueBright,cyanBright,redBright, greenBright } = require("chalk");
+const {
+  yellowBright,
+  blueBright,
+  cyanBright,
+  redBright,
+  greenBright,
+} = require("chalk");
 const VIDEO_TYPE = "mp4";
 let pathVideoDB = "",
   AllIndex = 0,
@@ -31,7 +37,9 @@ function hexToBytes(hex) {
     bytes.push(parseInt(hex.substr(c, 2), 16));
   return bytes;
 }
-
+function ab2str(buf) {
+  return String.fromCharCode.apply(null, new Uint16Array(buf));
+}
 async function init(url, newName) {
   try {
     const html = await fetch.get(url).then((data) => data.data);
@@ -60,9 +68,12 @@ async function download(segments, newName) {
     const spinner = ora(`开始下载:${newName}`).start(),
       len = segments.length;
     // 获得ak;
+
     const ak = await fetch
-      .get(segments[0].key.uri)
-      .then((data) => v2(data.data));
+      .get(segments[0].key.uri, {
+        responseType: "arraybuffer",
+      })
+      .then((data) => v2(ab2str(data.data)));
     let index = 0;
     async function callback(line) {
       try {
@@ -76,11 +87,14 @@ async function download(segments, newName) {
         cipher.on("error", (error) => {
           throw error;
         });
-        spinner.text = `${blueBright("总列表:")}${AllIndex}/${AllLen}\t${blueBright(
+        spinner.text = `${blueBright(
+          "总列表:"
+        )}${AllIndex}/${AllLen}\t${blueBright(
           "下载文件:"
         )}${newName} ${blueBright("下载进度:")}${index++}/${len}`;
         return Buffer.concat([cipher.update(content), cipher.final()]);
       } catch (error) {
+        console.log(error);
         spinner.fail(
           `${redBright("总列表:")}${AllIndex}/${AllLen}\t${redBright(
             "下载失败:"
@@ -88,7 +102,7 @@ async function download(segments, newName) {
         );
       }
     }
-    const results = await asyncPool(20, segments, callback);
+    const results = await asyncPool(12, segments, callback);
     const outputData = Buffer.concat(results);
     // await fs.writeFile(pathVideoDB, outputData);
     await transformVideo(pathVideoDB, outputData);
@@ -153,7 +167,8 @@ async function getDir(cid = "") {
       chapter = "",
       unit = "",
       CIndex = 0;
-    const baseUrl = path.join(__dirname, "../珠峰架构", dir);
+    const baseUrl = path.join(__dirname, "../珠峰架构", cid + dir);
+    await fs.ensureDir(baseUrl);
     const videoContext = JSON.parse($(".js-hidden-cached-data").text());
     AllLen = videoContext.length;
     for (let item of videoContext) {
@@ -194,7 +209,9 @@ async function getDir(cid = "") {
         }
         pathVideoDB = path.join(baseUrl, unit);
         console.log(
-          `${cyanBright("总列表:")}${AllIndex}/${AllLen}\t${cyanBright("非文件")}:${unit}`
+          `${cyanBright("总列表:")}${AllIndex}/${AllLen}\t${cyanBright(
+            "非文件"
+          )}:${unit}`
         );
         await fs.ensureDir(pathVideoDB);
       }
@@ -204,4 +221,4 @@ async function getDir(cid = "") {
   }
 }
 
-getDir("2024");
+getDir("2029");
