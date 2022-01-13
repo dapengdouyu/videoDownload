@@ -94,7 +94,6 @@ async function download(segments, newName) {
         )}${newName} ${blueBright("下载进度:")}${index++}/${len}`;
         return Buffer.concat([cipher.update(content), cipher.final()]);
       } catch (error) {
-        console.log(error);
         spinner.fail(
           `${redBright("总列表:")}${AllIndex}/${AllLen}\t${redBright(
             "下载失败:"
@@ -221,4 +220,8 @@ async function getDir(cid = "") {
   }
 }
 
-getDir("2029");
+getDir("2030");
+// 764
+// 827
+// 648
+//2页
