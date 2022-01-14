@@ -156,9 +156,11 @@ async function getDir(cid = "") {
     const url = `http://www.javascriptpeixun.cn/course/${cid}`;
     const htmlTitle = await fetch.get(`${url}`).then((data) => data.data);
     const dir = cheerio
-      .load(htmlTitle, { ignoreWhitespace: true })(".breadcrumb .active")
+      .load(htmlTitle, { ignoreWhitespace: true })("title")
       .text()
-      .trim();
+      .trim()
+      .slice(0, -28);
+    console.log(dir);
     const html = await fetch
       .get(`${url}/task/list/render/default`)
       .then((data) => data.data);
@@ -166,7 +168,7 @@ async function getDir(cid = "") {
       chapter = "",
       unit = "",
       CIndex = 0;
-    const baseUrl = path.join(__dirname, "../珠峰架构", cid + dir);
+    const baseUrl = path.join(__dirname, "../珠峰架构", `${cid} ${dir}`);
     await fs.ensureDir(baseUrl);
     const videoContext = JSON.parse($(".js-hidden-cached-data").text());
     AllLen = videoContext.length;
@@ -220,8 +222,4 @@ async function getDir(cid = "") {
   }
 }
 
-getDir("2030");
-// 764
-// 827
-// 648
-//2页
+getDir("2052");
