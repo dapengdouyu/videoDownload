@@ -43,6 +43,23 @@ function ab2str(buf) {
 async function init(url, newName) {
   try {
     const html = await fetch.get(url).then((data) => data.data);
+
+    const flag = cheerio
+      .load(html, { ignoreWhitespace: true })(html)
+      .text()
+      .replace(/\s/g, "");
+    if (
+      flag === "珠峰培训-PoweredByEduSoho抱歉，视频文件不存在，暂时无法学习。"
+    ) {
+      await fs.writeFile(pathVideoDB, "抱歉，视频文件不存在，暂时无法学习。");
+      console.log(
+        `${redBright("总列表:")}${AllIndex}/${AllLen}\t${redBright(
+          "下载失败:"
+        )}${newName} ${redBright("视频文件不存在，暂时无法学习")}`
+      );
+      return;
+    }
+
     const [fid, token] = handleHTml(html);
     const VideoUrl = getVideoUrl(fid, token);
     const res = await fetch.get(VideoUrl).then((data) => data.data);
@@ -160,7 +177,7 @@ async function getDir(cid = "") {
       .text()
       .trim()
       .slice(0, -28);
-    console.log(dir);
+
     const html = await fetch
       .get(`${url}/task/list/render/default`)
       .then((data) => data.data);
@@ -222,4 +239,22 @@ async function getDir(cid = "") {
   }
 }
 
-getDir("2052");
+async function getPage(page = 0) {
+  const url = `http://www.javascriptpeixun.cn/my/courses/learning?page=${page}`;
+  const htmlTitle = await fetch.get(`${url}`).then((data) => data.data);
+  const $ = cheerio.load(htmlTitle, { ignoreWhitespace: true });
+  const lists = $(".cd-link-major")
+    .map(function (i, item) {
+      return { name: $(this).text(), id: $(item).attr("href") };
+    })
+    .toArray();
+  for (let list of lists) {
+    console.log(`${yellowBright("正在下载:")}${list.name}---`);
+    AllIndex = 0;
+    const id = await fetch
+      .get(`http://www.javascriptpeixun.cn${list.id}`)
+      .then((data) => data.request.path.split("/")[2]);
+    await getDir(id);
+  }
+}
+getPage(4);
