@@ -4,7 +4,7 @@ const { Readable } = require("stream");
 const ffmpegPath = require("ffmpeg-static").replace(/app.asar[\/\\]{1,2}/g, ""); //文件地址
 const cheerio = require("cheerio");
 const crypto = require("crypto"); //引用AES源码js
-const { Parser } = require("./m3u8-parser.cjs");
+const { Parser } = require("m3u8-parser");
 const fetch = require("./http");
 const path = require("path");
 const ora = require("ora");
@@ -18,7 +18,7 @@ const {
   greenBright,
 } = require("chalk");
 const VIDEO_TYPE = "mp4";
-let pathVideoDB = "",
+let pathVideoDB = path.join(__dirname,'../珠峰架构/默认目录','45.vite实战.mp4'),
   AllIndex = 0,
   AllLen = 0;
 function handleHTml(html) {
@@ -257,4 +257,6 @@ async function getPage(page = 0) {
     await getDir(id);
   }
 }
-getPage(4);
+// getPage(4);
+// 252199
+init(`http://www.javascriptpeixun.cn/course/2637/task/252199/activity_show`,'45.vite实战')
