@@ -227,9 +227,9 @@ async function getDir(cid = "") {
             pathVideoDB
           );
           console.log(
-            `${yellowBright("总列表:")}${AllIndex}/${AllLen}\t${yellowBright(
-              "课程已重置为"
-            )}${newTitle}`
+            `${yellowBright("总列表:")}${AllIndex}/${AllLen}\t ${
+              configObj[`${cid}_${taskId}`].split("/").slice(-1)[0]
+            } ${yellowBright("课程已重置为")}${newTitle}`
           );
           continue;
         }
