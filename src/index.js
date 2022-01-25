@@ -18,7 +18,7 @@ const {
   greenBright,
 } = require("chalk");
 const VIDEO_TYPE = "mp4";
-let pathVideoDB = path.join(__dirname,'../珠峰架构/默认目录','45.vite实战.mp4'),
+let pathVideoDB = path.join(__dirname, "../珠峰架构/默认目录"),
   AllIndex = 0,
   AllLen = 0;
 function handleHTml(html) {
@@ -170,6 +170,7 @@ class FFmpegStreamReadable extends Readable {
 }
 async function getDir(cid = "") {
   try {
+    AllIndex = 0;
     const url = `http://www.javascriptpeixun.cn/course/${cid}`;
     const htmlTitle = await fetch.get(`${url}`).then((data) => data.data);
     const dir = cheerio
@@ -186,7 +187,15 @@ async function getDir(cid = "") {
       unit = "",
       CIndex = 0;
     const baseUrl = path.join(__dirname, "../珠峰架构", `${cid} ${dir}`);
+    const configUrl = path.join(baseUrl, "config.json");
+    await fs.ensureFile(configUrl);
     await fs.ensureDir(baseUrl);
+    let configObj;
+    try {
+      configObj = require(configUrl);
+    } catch (error) {
+      configObj = {};
+    }
     const videoContext = JSON.parse($(".js-hidden-cached-data").text());
     AllLen = videoContext.length;
     for (let item of videoContext) {
@@ -211,6 +220,21 @@ async function getDir(cid = "") {
           );
           continue;
         }
+
+        if (configObj[`${cid}_${taskId}`]) {
+          await fs.rename(
+            path.join(__dirname, configObj[`${cid}_${taskId}`]),
+            pathVideoDB
+          );
+          console.log(
+            `${yellowBright("总列表:")}${AllIndex}/${AllLen}\t${yellowBright(
+              "课程已重置为"
+            )}${newTitle}`
+          );
+          continue;
+        }
+        configObj[`${cid}_${taskId}`] = path.relative(__dirname, pathVideoDB);
+        await fs.writeFile(configUrl, JSON.stringify(configObj, null, 2));
         await init(
           `http://www.javascriptpeixun.cn/course/${cid}/task/${taskId}/activity_show`,
           newTitle
@@ -249,7 +273,11 @@ async function getPage(page = 0) {
     })
     .toArray();
   for (let list of lists) {
-    console.log(`\r\n${yellowBright("正在下载:")}${list.name}\r\n`);
+    console.log(
+      `\r\n${greenBright("正在下载:")}${++PageListIndex}/${lists.length} ${
+        list.name
+      }\r\n`
+    );
     AllIndex = 0;
     const id = await fetch
       .get(`http://www.javascriptpeixun.cn${list.id}`)
@@ -257,4 +285,5 @@ async function getPage(page = 0) {
     await getDir(id);
   }
 }
+let PageListIndex = 0;
 getPage(4);
