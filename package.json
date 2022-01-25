@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "cross-env FFMPEG_BIN='' & node src/index.js",
     "postinstall":"patch-package"
   },
   "keywords": [],
