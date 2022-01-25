@@ -249,7 +249,7 @@ async function getPage(page = 0) {
     })
     .toArray();
   for (let list of lists) {
-    console.log(`${yellowBright("正在下载:")}${list.name}---`);
+    console.log(`\r\n${yellowBright("正在下载:")}${list.name}\r\n`);
     AllIndex = 0;
     const id = await fetch
       .get(`http://www.javascriptpeixun.cn${list.id}`)
@@ -257,6 +257,4 @@ async function getPage(page = 0) {
     await getDir(id);
   }
 }
-// getPage(4);
-// 252199
-init(`http://www.javascriptpeixun.cn/course/2637/task/252199/activity_show`,'45.vite实战')
+getPage(4);
