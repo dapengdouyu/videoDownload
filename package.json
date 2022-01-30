@@ -1,27 +1,42 @@
 {
-  "name": "videoDownload",
+  "name": "@zhangyapeng/videoDownload",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "directories": {
     "doc": "doc"
   },
+  "bin": {
+    "dw-cli": "./bin/www.js"
+  },
   "scripts": {
     "start": "cross-env FFMPEG_BIN='' & node src/index.js",
-    "postinstall":"patch-package"
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/register": "^7.16.9",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "7.3.0",
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/plugin-transform-typescript": "^7.8.7",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.8.3",
     "axios": "^0.24.0",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
+    "commander": "^9.0.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^14.3.2",
     "ffmpeg-static": "^4.4.1",
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^10.0.0",
-    "m3u8-parser": "^4.7.0",
+    "m3u8-parser": "4.7.0",
     "ora": "5.4.1",
     "tiny-async-pool": "^1.2.0"
   },

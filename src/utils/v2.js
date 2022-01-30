@@ -1,4 +1,4 @@
-J = function (e, t) {
+function J(e, t) {
   var r = [];
   return (
     t.split("-").map(function (t) {
@@ -6,7 +6,7 @@ J = function (e, t) {
     }),
     r
   );
-};
+}
 function key_test(e) {
   var t;
   if (20 === e.byteLength) {
@@ -74,7 +74,7 @@ function toArrayBuffer(buffer) {
   }
   return ab;
 }
-module.exports = function input_key(t) {
+export function input_key(t) {
   //var t = "2bd2a485y4976fe4w4t33"
   for (var r = new Uint8Array(t.length), i = 0; i < t.length; i++) {
     var str = t.charAt(i);
@@ -85,4 +85,4 @@ module.exports = function input_key(t) {
     new Uint8Array(key_test(toArrayBuffer(r)).buffer)
   );
   return result;
-};
+}
