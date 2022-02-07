@@ -1,6 +1,6 @@
 {
-  "name": "@zhangyapeng/videoDownload",
-  "version": "1.0.0",
+  "name": "@zhangyapeng/video-dw",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -38,9 +38,8 @@
     "fs-extra": "^10.0.0",
     "m3u8-parser": "4.7.0",
     "ora": "5.4.1",
-    "tiny-async-pool": "^1.2.0"
-  },
-  "devDependencies": {
+    "tiny-async-pool": "^1.2.0",
     "patch-package": "^6.4.7"
-  }
+  },
+  "devDependencies": {}
 }

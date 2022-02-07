@@ -8,7 +8,7 @@ import {
   redBright,
   greenBright,
 } from "chalk";
-import { transformVideo, fetch, input_key, ab2str,hexToBytes } from "./index";
+import { transformVideo, fetch, input_key, ab2str, hexToBytes } from "./index";
 /**
  *
  * @param {*} segments
@@ -26,7 +26,8 @@ export async function download(segments, newName, dirPath, pathVideoDB) {
         responseType: "arraybuffer",
       })
       .then((data) => input_key(ab2str(data.data)));
-    let index = 0;
+    let index = 0,
+      flag = false;
     async function callback(line) {
       try {
         const key = line.key;
@@ -35,7 +36,7 @@ export async function download(segments, newName, dirPath, pathVideoDB) {
         const content = await fetch
           .get(ts_uri, { responseType: "arraybuffer" })
           .then((data) => data.data);
-        
+
         const cipher = crypto.createDecipheriv("aes-128-cbc", ak, iv);
         cipher.on("error", (error) => {
           throw error;
@@ -45,15 +46,19 @@ export async function download(segments, newName, dirPath, pathVideoDB) {
         )}${newName} ${blueBright("下载进度:")}${index++}/${len}`;
         return Buffer.concat([cipher.update(content), cipher.final()]);
       } catch (error) {
-        spinner.fail(
-          `${redBright("总列表:")}${dirPath}\t${redBright(
-            "下载失败:"
-          )}${newName}`
-        );
+        if (!flag) {
+          spinner.fail(
+            `\r\n${redBright("总列表:")}${dirPath}\t${redBright(
+              "下载失败:"
+            )}${newName}\r\n`
+          );
+          flag = true;
+        }
+
+        throw error;
       }
     }
     const results = await asyncPool(12, segments, callback);
-
     const outputData = Buffer.concat(results);
 
     // await fs.writeFile(pathVideoDB, outputData);

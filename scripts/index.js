@@ -20,12 +20,10 @@ program
     await getDir(dir);
   });
 program
-  .command("video [url]")
+  .command("video [cid_taskid] [newName]")
   .description("下载哪一个视频")
-  .action(async function (
-    url = "https://www.javascriptpeixun.cn/course/2033/task/120600/activity_show"
-  ) {
-    await getVideo(url);
+  .action(async function (cid_taskid = "2033_120600", newName = "a.mp4") {
+    await getVideo(cid_taskid, newName);
   });
 program
   .command("mount [page]")

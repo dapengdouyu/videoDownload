@@ -15,13 +15,16 @@ import { download } from "../utils";
  * @returns
  */
 export async function getVideo(
-  url = "",
+  cid_taskid = "",
   newName = "a.mp4",
   dirPath = "1/1",
-  pathVideoDB = path.join(cwd, "珠峰架构/默认目录/a.mp4")
+  pathVideoDB = path.join(cwd, `珠峰架构/默认目录/${newName}`)
 ) {
   try {
     await fs.ensureDir(path.dirname(pathVideoDB));
+    const url = `http://www.javascriptpeixun.cn/course/${
+      cid_taskid.split("_")[0]
+    }/task/${cid_taskid.split("_")[1]}/activity_show`;
     const html = await fetch.get(url).then((data) => data.data);
     const flag = cheerio
       .load(html, { ignoreWhitespace: true })(html)
