@@ -47,7 +47,7 @@ export async function mountConfig(page = 0, PageListIndex = 0) {
       CINDEX = 0,
       chapter = "",
       unit = "",pathVideoDB='';
-    const baseUrl = path.join(cwd, "珠峰架构", `第${page}页`, `${cid} ${dir}`);
+    const baseUrl = path.join(cwd, `珠峰架构-${VIDEO_TYPE}`, `第${page}页`, `${cid} ${dir}`);
     const configUrl = path.join(baseUrl, "config.json");
     const remoteconfigUrl = path.join(baseUrl, "Remoteconfig.json");
     await fs.ensureFile(configUrl);
@@ -70,12 +70,13 @@ export async function mountConfig(page = 0, PageListIndex = 0) {
           );
           continue;
         }
-        console.log(`${cyanBright('更新课程')}\t${newTitle}`)
+       
         remoteObj[`${cid}_${taskId}`] = path.relative(cwd, pathVideoDB);
         if (fs.existsSync(path.join(baseUrl, unit, newTitle))) {
           configObj[`${cid}_${taskId}`] = path.relative(cwd, pathVideoDB);
-          continue;
         }
+       
+        console.log(`${cyanBright('更新课程')}\t${newTitle}`)
         await fs.writeFile(configUrl, JSON.stringify(configObj, null, 2));
         await fs.writeFile(remoteconfigUrl, JSON.stringify(remoteObj, null, 2));
       } else {
@@ -96,5 +97,6 @@ export async function mountConfig(page = 0, PageListIndex = 0) {
         );
       }
     }
+    console.log(`${yellowBright('配置文件更新完成')}\t${cid} ${dir}`)
   }
 }

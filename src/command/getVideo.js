@@ -18,7 +18,7 @@ export async function getVideo(
   cid_taskid = "",
   newName = "a.mp4",
   dirPath = "1/1",
-  pathVideoDB = path.join(cwd, `珠峰架构/默认目录/${newName}`)
+  pathVideoDB = path.join(cwd, `珠峰架构-${VIDEO_TYPE}/默认目录/${newName}`)
 ) {
   try {
     await fs.ensureDir(path.dirname(pathVideoDB));

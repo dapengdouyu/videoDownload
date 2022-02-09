@@ -18,7 +18,7 @@ export async function getDir(
   page = 1,
   CINDEX = 0,
   dirIndex = 0,
-  pathVideoDB = path.join(cwd, "珠峰架构/默认目录")
+  pathVideoDB = path.join(cwd, `珠峰架构-${VIDEO_TYPE}/默认目录`)
 ) {
   try {
     const url = `http://www.javascriptpeixun.cn/course/${cid}`;
@@ -34,7 +34,7 @@ export async function getDir(
     let $ = cheerio.load(html, { ignoreWhitespace: true }),
       chapter = "",
       unit = "";
-    const baseUrl = path.join(cwd, "珠峰架构", `第${page}页`, `${cid} ${dir}`);
+    const baseUrl = path.join(cwd, `珠峰架构-${VIDEO_TYPE}`, `第${page}页`, `${cid} ${dir}`);
     const configUrl = path.join(baseUrl, "config.json");
     await fs.ensureFile(configUrl);
     await fs.ensureDir(baseUrl);
