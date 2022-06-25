@@ -14,6 +14,7 @@ import { download } from "../utils";
  * @param {*} pathVideoDB 当前视频下载路径
  * @returns
  */
+const VIDEO_TYPE='mp4'
 export async function getVideo(
   cid_taskid = "",
   newName = "a.mp4",
@@ -58,6 +59,6 @@ export async function getVideo(
     const segments = parser.manifest.segments;
     await download(segments, newName, dirPath, pathVideoDB);
   } catch (error) {
-    console.log("下载失败...", error.message);
+    console.log("下载失败...", error);
   }
 }

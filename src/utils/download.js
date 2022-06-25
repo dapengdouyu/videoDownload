@@ -54,7 +54,6 @@ export async function download(segments, newName, dirPath, pathVideoDB) {
           );
           flag = true;
         }
-
         throw error;
       }
     }

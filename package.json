@@ -10,7 +10,7 @@
     "dw-cli": "./bin/www.js"
   },
   "scripts": {
-    "start": "cross-env FFMPEG_BIN='' & node src/index.js",
+    "start": "node src/index.js",
     "postinstall": "patch-package"
   },
   "keywords": [],

@@ -62,7 +62,7 @@ export async function getDir(
         }
         if (status !== "published") {
           console.log(
-            `${yellowBright("总列表:")}${dirCount}/${dirCount}\t${yellowBright(
+            `${yellowBright("总列表:")}${dirIndex}/${dirCount}\t${yellowBright(
               "课程未发布"
             )}:${newTitle}`
           );
@@ -86,7 +86,7 @@ export async function getDir(
         await getVideo(
           `${cid}_${taskId}`,
           newTitle,
-          `${dirCount}/${dirCount}`,
+          `${dirIndex}/${dirCount}`,
           pathVideoDB
         );
         configObj[`${cid}_${taskId}`] = path.relative(cwd, pathVideoDB);
